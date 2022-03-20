@@ -16,11 +16,14 @@
   div {
     margin: 0;
     text-align: center;
-    font-size: 0.8rem;
+    font-size: 1rem;
     background-color: #325f8f;
     color: white;
     font-weight: bold;
     padding-block: 0.5rem;
+    @media screen and (max-width: 420px) {
+      font-size: 0.7rem;
+    }
   }
   div:first-child {
     border-top-left-radius: 0.5rem;
