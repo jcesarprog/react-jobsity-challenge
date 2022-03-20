@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { gsap } from "gsap";
 import { useAppContext } from "../contexts/AppContext";
 import "../sass/modal.scss";
@@ -24,16 +24,22 @@ export const Modal = ({ setOpenModal, day }) => {
 
   const errorEl = React.useRef();
 
+  const clearEventAndCloseModel = useCallback(() => {
+    setEventSelected(null);
+    setOpenModal(false);
+  },[setEventSelected, setOpenModal]);
+
   const handleAddEvent = () => {
+    // handler for updating and saving
     const { 
       title, city, day, hour, minute, forecast, icon, status 
     } = event;
-    if(status === "error") {
+    if (status === "error") {
       // Guard clause with TEXT UPDATE
-      errorEl.current.innerText="PLEASE ENTER A VALID CITY !"
-      return
+      errorEl.current.innerText = "PLEASE ENTER A VALID CITY !";
+      return;
     }
-    
+
     const calendarEvent = {
       title,
       city,
@@ -47,23 +53,18 @@ export const Modal = ({ setOpenModal, day }) => {
     if (eventSelected)
       dispatchCalEvent({ type: "update", payload: calendarEvent });
     else dispatchCalEvent({ type: "push", payload: calendarEvent });
-    setEventSelected(null);
-    setOpenModal(false);
-    
+    clearEventAndCloseModel();
   };
 
   useEffect(() => {
-    const handleEscape = (e) =>{ 
-      if(e.key === "Escape"){
-        setEventSelected(null);
-        setOpenModal(false);
-      }};
+    // to handle the closing when pressing Esc
+    const handleEscape = (e) => e.key === "Escape" && clearEventAndCloseModel();
     window.addEventListener("keydown", handleEscape);
-
     return () => window.removeEventListener("keydown", handleEscape);
-  }, [setEventSelected, setOpenModal]);
+  }, [clearEventAndCloseModel]);
 
-  React.useEffect(() => {
+  useEffect(() => {
+    // Animation of modal opening
     gsap
       .timeline()
       .to(modalOverlayRef.current, {
@@ -82,11 +83,8 @@ export const Modal = ({ setOpenModal, day }) => {
     <div
       className="modal__overlay"
       ref={modalOverlayRef}
-      onClick={(e) =>{
-        if(!e.target.closest(".modal__container")){
-          setEventSelected(null);
-          setOpenModal(false);
-        }}
+      onClick={(e) =>
+        !e.target.closest(".modal__container") && clearEventAndCloseModel()
       }
     >
       <div className="modal__container" ref={modalContainerRef}>
@@ -96,10 +94,7 @@ export const Modal = ({ setOpenModal, day }) => {
             <h3 className="modal__header-day">{day.format("dddd, MMMM DD")}</h3>
           </div>
           <div className="modal__header-icons">
-            <span
-              className="material-icons"
-              onClick={() => setOpenModal(false)}
-            >
+            <span className="material-icons" onClick={clearEventAndCloseModel}>
               close
             </span>
           </div>
@@ -184,7 +179,10 @@ export const Modal = ({ setOpenModal, day }) => {
           </div>
           <div className="modal__form-forecast-box">
             <p>Weather Forecast:</p>
-            <p ref={errorEl} className={`${event.status === "error"? "error": ""}`}>
+            <p
+              ref={errorEl}
+              className={`${event.status === "error" ? "error" : ""}`}
+            >
               {event.forecast
                 ? event.forecast
                 : "Waiting a the city to search.."}
@@ -201,11 +199,10 @@ export const Modal = ({ setOpenModal, day }) => {
             <button
               className="btn-del"
               onClick={() => {
-                if(eventSelected){
-                dispatchCalEvent({ type: "delete", payload: eventSelected });
-                setEventSelected(null);
-              }
-                setOpenModal(false);
+                if (eventSelected) {
+                  dispatchCalEvent({ type: "delete", payload: eventSelected });
+                }
+                clearEventAndCloseModel();
               }}
             >
               {eventSelected ? "Delete" : "Cancel"}{" "}
