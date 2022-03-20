@@ -126,8 +126,8 @@
   align-items: center;
   gap: 1rem;
   @media screen and (max-width: 420px) {
-    font-size: .9rem;
-    gap: .2rem;
+    // font-size: .9rem;
+    gap: .5rem;
   }
   .error {
     color: red;
