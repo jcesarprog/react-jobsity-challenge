@@ -126,7 +126,7 @@
   align-items: center;
   gap: 1rem;
   @media screen and (max-width: 420px) {
-    // font-size: .9rem;
+    font-size: .9rem;
     gap: .2rem;
   }
   .error {
