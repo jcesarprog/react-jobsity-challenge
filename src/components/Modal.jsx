@@ -34,8 +34,9 @@ export const Modal = ({ setOpenModal, day }) => {
     const { 
       title, city, day, hour, minute, forecast, icon, status 
     } = event;
-    if (status === "error") {
+    if (status === "error" || !icon) {
       // Guard clause with TEXT UPDATE
+      errorEl.current.classList.add("error");
       errorEl.current.innerText = "PLEASE ENTER A VALID CITY !";
       return;
     }
@@ -123,6 +124,7 @@ export const Modal = ({ setOpenModal, day }) => {
             placeholder="Add a city"
             value={event.city}
             onBlur={(e) => {
+              if(e.target.value.length >0){
               visualCrossingService
                 .getWeather(e.target.value, day.format("YYYY-MM-DD"))
                 .then((data) => {
@@ -140,13 +142,20 @@ export const Modal = ({ setOpenModal, day }) => {
                     status: "error"
                   }));
                 });
+              }else {
+                setEvent((curr) => ({
+                  ...curr,
+                  forecast: "City not found !",
+                  status: "error"
+                }));
+              }
             }}
             onChange={(e) =>
               setEvent((curr) => ({
                 ...curr,
                 city:
                   e.target.value.length <= maxLengthInput
-                    ? e.target.value
+                    ? e.target.value.toLowerCase()
                     : curr.city
               }))
             }
@@ -187,7 +196,7 @@ export const Modal = ({ setOpenModal, day }) => {
                 ? event.forecast
                 : "Waiting a the city to search.."}
             </p>
-            {event.icon && (
+            {event.status !== "error" && event.icon && (
               <img
                 src={icons[event.icon.replaceAll("-", "_")]}
                 alt="weather"
