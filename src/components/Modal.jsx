@@ -22,10 +22,18 @@ export const Modal = ({ setOpenModal, day }) => {
   const modalContainerRef = React.useRef();
   const maxLengthInput = 30;
 
+  const errorEl = React.useRef();
+
   const handleAddEvent = () => {
     const { 
-      title, city, day, hour, minute, forecast, icon 
+      title, city, day, hour, minute, forecast, icon, status 
     } = event;
+    if(status === "error") {
+      // Guard clause with TEXT UPDATE
+      errorEl.current.innerText="PLEASE ENTER A VALID CITY !"
+      return
+    }
+    
     const calendarEvent = {
       title,
       city,
@@ -41,6 +49,7 @@ export const Modal = ({ setOpenModal, day }) => {
     else dispatchCalEvent({ type: "push", payload: calendarEvent });
     setEventSelected(null);
     setOpenModal(false);
+    
   };
 
   useEffect(() => {
@@ -118,13 +127,15 @@ export const Modal = ({ setOpenModal, day }) => {
                   setEvent((curr) => ({
                     ...curr,
                     icon: data?.icon,
-                    forecast: data?.conditions
+                    forecast: data?.conditions,
+                    status: "ok"
                   }));
                 })
                 .catch((err) => {
                   setEvent((curr) => ({
                     ...curr,
-                    forecast: "City not found!"
+                    forecast: "City not found !",
+                    status: "error"
                   }));
                 });
             }}
@@ -166,10 +177,10 @@ export const Modal = ({ setOpenModal, day }) => {
           </div>
           <div className="modal__form-forecast-box">
             <p>Weather Forecast:</p>
-            <p>
+            <p ref={errorEl} className={`${event.status === "error"? "error": ""}`}>
               {event.forecast
                 ? event.forecast
-                : "Waiting for the city to search.."}
+                : "Waiting a the city to search.."}
             </p>
             {event.icon && (
               <img
@@ -183,8 +194,10 @@ export const Modal = ({ setOpenModal, day }) => {
             <button
               className="btn-del"
               onClick={() => {
+                if(eventSelected){
                 dispatchCalEvent({ type: "delete", payload: eventSelected });
                 setEventSelected(null);
+              }
                 setOpenModal(false);
               }}
             >
