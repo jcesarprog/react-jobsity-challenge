@@ -65,7 +65,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-
+    
     flex-wrap: nowrap;
     margin-top: 0.1rem;
     background-color: #bfd6f0;
@@ -88,6 +88,7 @@
       background-color: #8fbdf1;
     }
     @media screen and (max-width: 420px) {
+      font-size: .8rem;
       img {
         width: 1.2rem;
         height: 1.2rem;
