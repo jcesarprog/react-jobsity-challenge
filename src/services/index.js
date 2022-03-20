@@ -1,3 +1,3 @@
 import { visualCrossingService } from "./visualCrossing";
 
-export { visualCrossingService }
+export { visualCrossingService };

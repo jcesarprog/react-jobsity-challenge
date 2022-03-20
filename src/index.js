@@ -1,8 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from 'react-router-dom';
-// import getStore from "./store/getStore";
-// import reducers from './reducers';
+
 import Main from './Main';
 import reportWebVitals from "./reportWebVitals";
 import { AppContextProvider } from "./contexts/AppContext";
@@ -12,13 +11,11 @@ import "./sass/app.scss";
 
 ReactDOM.render(
   <React.StrictMode>
-    {/* <ReduxProvider store={getStore(reducers)}> */}
     <AppContextProvider>
 	    <BrowserRouter>
 	      <Main />
 	    </BrowserRouter>
       </AppContextProvider>
-    {/* </ReduxProvider> */}
   </React.StrictMode>,
   document.getElementById("root")
 );

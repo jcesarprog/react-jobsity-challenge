@@ -11,7 +11,6 @@ const weekDays = [
   "Saturday"
 ];
 export const Month = ({ month }) => {
-  
   return (
     <>
       <div className="week-days">
@@ -28,7 +27,6 @@ export const Month = ({ month }) => {
           </React.Fragment>
         ))}
       </div>
-      
     </>
   );
 };

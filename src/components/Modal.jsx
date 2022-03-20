@@ -23,9 +23,9 @@ export const Modal = ({ setOpenModal, day }) => {
   const maxLengthInput = 30;
 
   const handleAddEvent = () => {
-    const {
- title, city, day, hour, minute, forecast, icon 
-} = event;
+    const { 
+      title, city, day, hour, minute, forecast, icon 
+    } = event;
     const calendarEvent = {
       title,
       city,
@@ -40,7 +40,6 @@ export const Modal = ({ setOpenModal, day }) => {
       dispatchCalEvent({ type: "update", payload: calendarEvent });
     else dispatchCalEvent({ type: "push", payload: calendarEvent });
     setEventSelected(null);
-
     setOpenModal(false);
   };
 
@@ -51,7 +50,6 @@ export const Modal = ({ setOpenModal, day }) => {
     return () => window.removeEventListener("keydown", handleEscape);
   }, [setOpenModal]);
 
-  
   React.useEffect(() => {
     gsap
       .timeline()
@@ -82,7 +80,6 @@ export const Modal = ({ setOpenModal, day }) => {
             <h3 className="modal__header-day">{day.format("dddd, MMMM DD")}</h3>
           </div>
           <div className="modal__header-icons">
-            {/* <span className="material-icons">drag_handle</span> */}
             <span
               className="material-icons"
               onClick={() => setOpenModal(false)}
@@ -124,11 +121,11 @@ export const Modal = ({ setOpenModal, day }) => {
                     forecast: data?.conditions
                   }));
                 })
-                .catch(err => {
+                .catch((err) => {
                   setEvent((curr) => ({
                     ...curr,
                     forecast: "City not found!"
-                  }))
+                  }));
                 });
             }}
             onChange={(e) =>
@@ -169,10 +166,13 @@ export const Modal = ({ setOpenModal, day }) => {
           </div>
           <div className="modal__form-forecast-box">
             <p>Weather Forecast:</p>
-            <p>{event.forecast ? event.forecast : "Waiting for the city to search.."}</p>
+            <p>
+              {event.forecast
+                ? event.forecast
+                : "Waiting for the city to search.."}
+            </p>
             {event.icon && (
               <img
-                
                 src={icons[event.icon.replaceAll("-", "_")]}
                 alt="weather"
                 className="forecast-icon"
@@ -188,7 +188,8 @@ export const Modal = ({ setOpenModal, day }) => {
                 setOpenModal(false);
               }}
             >
-              {eventSelected ? "Delete" : "Cancel"} <span className="material-icons">delete</span>
+              {eventSelected ? "Delete" : "Cancel"}{" "}
+              <span className="material-icons">delete</span>
             </button>
             <button className="btn-save" onClick={handleAddEvent}>
               {eventSelected ? "Update" : "Save"}
