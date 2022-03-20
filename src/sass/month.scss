@@ -1,0 +1,31 @@
+.month__container,
+.week-days {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  margin: 0;
+}
+
+.month__container div:nth-child(29) {
+  border-bottom-left-radius: 0.5rem;
+}
+.month__container div:nth-child(35) {
+  border-bottom-right-radius: 0.5rem;
+}
+.week-days {
+  div {
+    margin: 0;
+    text-align: center;
+    font-size: 0.8rem;
+    background-color: #325f8f;
+    color: white;
+    font-weight: bold;
+    padding-block: 0.5rem;
+  }
+  div:first-child {
+    border-top-left-radius: 0.5rem;
+  }
+  div:last-child {
+    border-top-right-radius: 0.5rem;
+  }
+}

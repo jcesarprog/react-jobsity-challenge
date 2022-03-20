@@ -1,0 +1,97 @@
+nav {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  @media screen and (max-width: 420px) {
+  gap: .5rem;
+  }
+  div {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+}
+
+.nav__month-btn {
+  margin: 0;
+  background: none;
+  border: none;
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+
+  @media screen and (max-width: 420px) {
+    width: 1.5rem;
+  height: 1.5rem;
+      
+    }
+  span {
+    font-size: 1.8rem;
+    color: #666;
+    border-radius: 50%;
+
+    transition: all 0.1s linear;
+  }
+
+  span:hover {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #325f8f;
+    color: white;
+    border-radius: 50%;
+    width: 1.8rem;
+    height: 1.8rem;
+  }
+}
+
+.nav__month-today {
+  border: 1px solid #ccc;
+  min-width: max-content;
+  border-radius: 5px;
+  padding: 0 1rem;
+  margin-inline: 1rem;
+  font-weight: 600;
+  transition: all 0.1s linear;
+  
+  &:hover {
+    color: white;
+    background-color: #325f8f;
+  }
+}
+
+.nav__month-title {
+  margin: 0;
+  color: #777;
+  @media screen and (max-width: 420px) {
+    font-size: 1rem;
+  }
+}
+
+.nav__logo {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  
+  img {
+    width: 2rem;
+    height: 2rem;
+    @media screen and (max-width: 420px) {
+      width: 1rem;
+    height: 1rem;
+      }
+  }
+  p {
+    margin: 0;
+    margin-left: -0.5rem;
+    margin-right: 1rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-size: 1.5rem;
+    @media screen and (max-width: 420px) {
+      font-size: 1rem;
+      }
+    // font-family: Inter;
+  }
+}
