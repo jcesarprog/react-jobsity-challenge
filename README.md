@@ -6,14 +6,16 @@
 
 ## Screenshots samples
 
-![Calendar](./../screenshots/calendar1.png "Calendar")
+![Calendar](./screenshots/calendar1.png "Calendar")
 
-![Calendar with added events](./../screenshots/calendar2.png "Calendar with events")
+![Calendar with added events](./screenshots/calendar2.png "Calendar with events")
 
-![Modal](./../screenshots/modal.png "Modal")
+![Modal](./screenshots/modal.png "Modal")
 
-![Modal with data](./../screenshots/modal2.png "Modal with data")
+![Modal with data](./screenshots/modal2.png "Modal with data")
 
+## Deployed App on Heroku
+[React-Jobsity-Challenge App](https://react-jobsity-challenge.herokuapp.com/calendar)
 
 ## How to deploy
 
