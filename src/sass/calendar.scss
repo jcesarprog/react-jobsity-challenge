@@ -1,7 +1,10 @@
-
 footer {
   text-align: center;
   font-size: 1.2rem;
   letter-spacing: 1px;
   text-transform: uppercase;
+  font-weight: bold;
+  @media screen and (max-width: 420px) {
+    font-size: 0.9rem;
+  }
 }
