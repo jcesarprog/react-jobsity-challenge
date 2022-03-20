@@ -8,6 +8,11 @@
   min-height: 70px;
   cursor: pointer;
   transition: all 0.2s linear;
+
+  @media screen and (max-width: 420px) {
+    min-height: 50px;
+  }
+
   &:hover {
     background-color: #ddd;
   }
@@ -16,6 +21,9 @@
     font-size: 1rem;
     margin-block: 0.5rem;
     font-weight: bold;
+    @media screen and (max-width: 420px) {
+      font-size: 0.7rem;
+    }
   }
 
   &-circle-today {
@@ -71,9 +79,20 @@
     border-radius: 5px;
     cursor: pointer;
     transition: all 0.2s linear;
-
+    img {
+      width: 1.5rem;
+      height: 1.5rem;
+      margin-right: 0.2rem;
+    }
     &:hover {
       background-color: #8fbdf1;
+    }
+    @media screen and (max-width: 420px) {
+      img {
+        width: 1.2rem;
+        height: 1.2rem;
+        margin-left: 0.2rem;
+      }
     }
   }
 }
