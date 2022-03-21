@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import dayjs from "dayjs";
-import "../sass/day.scss";
 import { useAppContext } from "../contexts/AppContext";
 import { icons } from "../assets/icons";
+import "../sass/day.scss";
 
 export const Day = ({ day }) => {
   const {
