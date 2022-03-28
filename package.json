@@ -43,5 +43,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "engines": {
+    "node": "16.x",
+    "npm": "8.x",
+    "yarn": "1.x"
   }
 }
