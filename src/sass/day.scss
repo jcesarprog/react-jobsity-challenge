@@ -8,6 +8,7 @@
   min-height: 70px;
   cursor: pointer;
   transition: all 0.2s linear;
+  overflow: hidden;
 
   @media screen and (max-width: 420px) {
     min-height: 50px;
@@ -61,28 +62,37 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  div {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    flex-wrap: nowrap;
-    margin-top: 0.1rem;
+  overflow: hidden;
+  &-event {
+    padding: 0.2rem 0.4rem;
+    margin: 0 20px;
     background-color: #bfd6f0;
-    padding-left: 0.5rem;
-    padding-block: 5px;
-    margin-inline: 0.1rem;
-    max-width: 114px;
-    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     border-radius: 5px;
+    width: 75px;
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 2px;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    @media screen and (max-width: 420px) {
+      margin-left: 10px;
+      width: 30px;
+    }
+    p {
+      margin: 0;
+      font-weight: 500;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+    }
     cursor: pointer;
     transition: all 0.2s linear;
     img {
       width: 1.5rem;
       height: 1.5rem;
-      margin-right: 0.2rem;
+      margin-inline: 0.3rem;
     }
     &:hover {
       background-color: #8fbdf1;

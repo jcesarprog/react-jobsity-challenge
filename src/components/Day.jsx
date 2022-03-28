@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import dayjs from "dayjs";
 import { useAppContext } from "../contexts/AppContext";
-import { icons } from "../assets/icons";
+import { Slider } from "./Slider";
 import "../sass/day.scss";
 
 export const Day = ({ day }) => {
@@ -9,8 +9,7 @@ export const Day = ({ day }) => {
     monthIndex,
     setOpenModal,
     setDaySelected,
-    savedEvents,
-    setEventSelected
+    savedEvents
   } = useAppContext();
   const [dayEvents, setDayEvents] = useState([]);
 
@@ -37,35 +36,24 @@ export const Day = ({ day }) => {
     if (isWeekend) classToBeApplied += "blueish ";
     return classToBeApplied;
   }
-
+ 
   return (
     <div
       className={`day ${isWeekend ? "weekend" : ""}`}
-      onClick={() => {
+      onClick={(e) => {
+        if(e.target.className !== "material-icons"){
         setDaySelected(day);
         setOpenModal(true);
+      }
       }}
     >
       <span className={`${getCurrentDayClass() && "day-circle-today"}`}>
         <p className={getGrayBlueishColor()}>{day.format("DD")}</p>
       </span>
       <div className="day__event">
-        {dayEvents.map((evt, idx) => (
-          <div
-            key={idx}
-            onClick={() => {
-              setEventSelected(evt);
-              setOpenModal(true);
-            }}
-          >
-            {evt.title.substring(0, 10) + (evt.title.length > 10 ? "..." : "")}
-            <img
-              src={icons[evt.icon.replaceAll("-", "_")]}
-              alt="weather"
-              className="forecast-icon"
-            />
-          </div>
-        ))}
+        {dayEvents.length ? (
+          <Slider dayEvents={dayEvents} setDayEvents={setDayEvents}/>
+        ): null}
       </div>
     </div>
   );

@@ -1,0 +1,52 @@
+.slider__container {
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  .btn {
+    margin: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    background: none;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: absolute;
+    
+    &:hover {
+      background-color: #325f8f;
+      color: white;
+      border-radius: 50%;
+    }
+
+    .material-icons {
+        @media screen and (max-width: 420px) {
+        font-size: 16px;
+        }
+    }
+  }
+
+  &-btn-left {
+    left: 0;
+    @media screen and (max-width: 420px) {
+        left: -4px;
+      }
+  }
+  &-btn-right {
+    right: 0;
+    @media screen and (max-width: 420px) {
+        right: -4px;
+      }
+  }
+
+  &-events {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

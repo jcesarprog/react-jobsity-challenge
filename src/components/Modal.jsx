@@ -1,5 +1,6 @@
 import React from "react";
 import { icons } from "../assets/icons";
+import { useAppContext } from "../contexts/AppContext";
 import { useModalHook } from "../hooks/useModalHook";
 import "../sass/modal.scss";
 
@@ -17,6 +18,7 @@ export const Modal = ({ setOpenModal, day }) => {
     handleAddEvent,
     renderWeather
   } = useModalHook(setOpenModal, day)
+  const {setItemToBeDeleted} = useAppContext();
   return (
     <div
       className="modal__overlay"
@@ -120,6 +122,7 @@ export const Modal = ({ setOpenModal, day }) => {
               className="btn-del"
               onClick={() => {
                 if (eventSelected) {
+                  setItemToBeDeleted(eventSelected);
                   dispatchCalEvent({ type: "delete", payload: eventSelected });
                 }
                 clearEventAndCloseModel();

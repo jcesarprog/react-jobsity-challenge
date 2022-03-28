@@ -12,7 +12,9 @@ const AppContext = React.createContext({
   dispatchCalEvent: ({type, payload}) => {},
   savedEvents: [],
   setEventSelected:() => {},
-  eventSelected: null
+  eventSelected: null,
+  setItemToBeDeleted:() => {},
+  itemToBeDeleted: null
 });
 
 export const useAppContext = () => React.useContext(AppContext);
@@ -22,7 +24,7 @@ export const AppContextProvider = ({ children }) => {
   const [daySelected, setDaySelected] = useState(undefined);
   const [eventSelected, setEventSelected] = useState(null);
   const [savedEvents, dispatchCalEvent] = useEventReducer();
-  
+  const [itemToBeDeleted, setItemToBeDeleted] = useState(null);
   useEffect(()=>{
     localStorage.setItem("savedEvents", JSON.stringify(savedEvents));
   },[savedEvents])
@@ -37,7 +39,9 @@ export const AppContextProvider = ({ children }) => {
     dispatchCalEvent,
     savedEvents,
     eventSelected,
-    setEventSelected
+    setEventSelected,
+    setItemToBeDeleted,
+    itemToBeDeleted
   };
 
   return <AppContext.Provider value={values}>{children}</AppContext.Provider>;
