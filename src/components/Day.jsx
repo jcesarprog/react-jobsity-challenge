@@ -5,12 +5,8 @@ import { Slider } from "./Slider";
 import "../sass/day.scss";
 
 export const Day = ({ day }) => {
-  const {
-    monthIndex,
-    setOpenModal,
-    setDaySelected,
-    savedEvents
-  } = useAppContext();
+  const { monthIndex, setOpenModal, setDaySelected, savedEvents } =
+    useAppContext();
   const [dayEvents, setDayEvents] = useState([]);
 
   useEffect(() => {
@@ -36,25 +32,28 @@ export const Day = ({ day }) => {
     if (isWeekend) classToBeApplied += "blueish ";
     return classToBeApplied;
   }
- 
+
   return (
-    <div
-      className={`day ${isWeekend ? "weekend" : ""}`}
+    // ! added just for accessibility purposes, being able to press tab to navigate through the days
+    <button
+      className="btn__day"
       onClick={(e) => {
-        if(e.target.className !== "material-icons"){
-        setDaySelected(day);
-        setOpenModal(true);
-      }
+        if (e.target.className !== "material-icons") {
+          setDaySelected(day);
+          setOpenModal(true);
+        }
       }}
     >
-      <span className={`${getCurrentDayClass() && "day-circle-today"}`}>
-        <p className={getGrayBlueishColor()}>{day.format("DD")}</p>
-      </span>
-      <div className="day__event">
-        {dayEvents.length ? (
-          <Slider dayEvents={dayEvents} setDayEvents={setDayEvents}/>
-        ): null}
+      <div className={`day ${isWeekend ? "weekend" : ""}`}>
+        <span className={`${getCurrentDayClass() && "day-circle-today"}`}>
+          <p className={getGrayBlueishColor()}>{day.format("DD")}</p>
+        </span>
+        <div className="day__event">
+          {dayEvents.length ? (
+            <Slider dayEvents={dayEvents} setDayEvents={setDayEvents} />
+          ) : null}
+        </div>
       </div>
-    </div>
+    </button>
   );
 };

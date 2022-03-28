@@ -8,11 +8,11 @@ export const Slider = ({ dayEvents, setDayEvents }) => {
   const [currEvent, setCurrEvent] = useState(0);
   const [smDown, setSmDown] = useState(false);
 
-    useEffect(() => {
-        if (window.innerWidth <= 420) {
-            setSmDown(true);
-        }
-    },[])
+  useEffect(() => {
+    if (window.innerWidth <= 420) {
+      setSmDown(true);
+    }
+  }, []);
 
   useEffect(() => {
     if (itemToBeDeleted) {
@@ -21,11 +21,11 @@ export const Slider = ({ dayEvents, setDayEvents }) => {
       );
       setCurrEvent(0);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [ itemToBeDeleted]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [itemToBeDeleted]);
   return (
     <div className="slider__container">
-      {(currEvent !== 0 && dayEvents[currEvent].title) && (
+      {currEvent !== 0 && dayEvents[currEvent].title && (
         <button
           className="slider__container-btn-left btn"
           onClick={() => setCurrEvent((curr) => curr - 1)}
@@ -46,14 +46,13 @@ export const Slider = ({ dayEvents, setDayEvents }) => {
             {dayEvents[currEvent].title.substring(0, 10) +
               (dayEvents[currEvent].title.length > 10 ? "..." : "")}
           </p>
-            {!smDown && (
-                <img
-                src={icons[dayEvents[currEvent].icon.replaceAll("-", "_")]}
-                alt="weather"
-                className="forecast-icon"
-              />
-            )}
-          
+          {!smDown && (
+            <img
+              src={icons[dayEvents[currEvent].icon.replaceAll("-", "_")]}
+              alt="weather"
+              className="forecast-icon"
+            />
+          )}
         </div>
       </div>
       {currEvent !== dayEvents.length - 1 && (

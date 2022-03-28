@@ -9,11 +9,11 @@ const AppContext = React.createContext({
   setOpenModal: (bool) => {},
   daySelected: undefined,
   setDaySelected: (day) => {},
-  dispatchCalEvent: ({type, payload}) => {},
+  dispatchCalEvent: ({ type, payload }) => {},
   savedEvents: [],
-  setEventSelected:() => {},
+  setEventSelected: () => {},
   eventSelected: null,
-  setItemToBeDeleted:() => {},
+  setItemToBeDeleted: () => {},
   itemToBeDeleted: null
 });
 
@@ -25,9 +25,9 @@ export const AppContextProvider = ({ children }) => {
   const [eventSelected, setEventSelected] = useState(null);
   const [savedEvents, dispatchCalEvent] = useEventReducer();
   const [itemToBeDeleted, setItemToBeDeleted] = useState(null);
-  useEffect(()=>{
+  useEffect(() => {
     localStorage.setItem("savedEvents", JSON.stringify(savedEvents));
-  },[savedEvents])
+  }, [savedEvents]);
 
   const values = {
     monthIndex,

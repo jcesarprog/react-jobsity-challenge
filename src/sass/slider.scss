@@ -16,7 +16,7 @@
     align-items: center;
     cursor: pointer;
     position: absolute;
-    
+
     &:hover {
       background-color: #325f8f;
       color: white;
@@ -24,23 +24,23 @@
     }
 
     .material-icons {
-        @media screen and (max-width: 420px) {
+      @media screen and (max-width: 420px) {
         font-size: 16px;
-        }
+      }
     }
   }
 
   &-btn-left {
     left: 0;
     @media screen and (max-width: 420px) {
-        left: -4px;
-      }
+      left: -4px;
+    }
   }
   &-btn-right {
     right: 0;
     @media screen and (max-width: 420px) {
-        right: -4px;
-      }
+      right: -4px;
+    }
   }
 
   &-events {
