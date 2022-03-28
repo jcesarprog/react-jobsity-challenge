@@ -18,7 +18,8 @@
 [React-Jobsity-Challenge App](https://react-jobsity-challenge.herokuapp.com/calendar)
 
 ## How to deploy
-
+ - Install node >= 16.14 
+ - NPM >= 8.5 or Yarn >= 1.22
  - Run `npm install` | `yarn install` to install all dependencies.
  - Run `npm start`   | `yarn run` to run the app locally.
  - Create a .env file on the root folder with:
