@@ -32,11 +32,13 @@ export function useModalHook(setOpenModal, day){
           visualCrossingService
             .getWeather(e.target.value, day.format("YYYY-MM-DD"))
             .then((data) => {
+              // console.log(data);
               setEvent((curr) => ({
                 ...curr,
-                icon: data?.icon,
-                forecast: data?.conditions,
-                status: "ok"
+                icon: data.days[0]?.icon,
+                forecast: data.days[0]?.conditions,
+                status: "ok",
+                city: data?.resolvedAddress.split(',')[0].toUpperCase()
               }));
             })
             .catch((err) => {

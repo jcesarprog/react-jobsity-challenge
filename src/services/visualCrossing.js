@@ -14,7 +14,8 @@ function getOptionsWeather(city, date) {
 async function getWeather(city, date) {
   try {
     const res = await axios.request(getOptionsWeather(city, date));
-    const data = res.data.days[0];
+    // const data = res.data.days[0];
+    const data = res.data;
     // console.log([data.conditions, data.icon]);
     return data;
   } catch (error) {
