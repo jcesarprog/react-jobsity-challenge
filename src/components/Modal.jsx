@@ -23,6 +23,7 @@ export const Modal = ({ setOpenModal, day }) => {
     <div
       className="modal__overlay"
       ref={modalOverlayRef}
+      // eslint-disable-next-line jsx-a11y/aria-role
       role="overlay"
       onClick={(e) =>
         !e.target.closest(".modal__container") && clearEventAndCloseModel()
@@ -106,6 +107,7 @@ export const Modal = ({ setOpenModal, day }) => {
             <p role="paragraph">Weather Forecast:</p>
             <p
             role="paragraph"
+            aria-label="error"
               ref={errorEl}
               className={`${event.status === "error" ? "error" : ""}`}
             >

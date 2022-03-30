@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/aria-role */
 import React from "react";
 import { useAppContext } from "../contexts/AppContext";
 
@@ -12,9 +13,9 @@ function Calendar(props) {
 
   const { monthIndex, openModal, setOpenModal, daySelected } = useAppContext();
   return (
-    <div className="container">
+    <div className="container" role="section">
       <Navbar />
-      <main>
+      <main role="section" >
         <Month month={getMonth(monthIndex)} />
       </main>
       <footer>
