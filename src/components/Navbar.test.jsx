@@ -4,21 +4,21 @@ import dayjs from "dayjs";
 import { AppContextProvider } from "../contexts/AppContext";
 import { Navbar } from "./Navbar";
 
- // Just a helper array to check month updates without using the Api call due to limit of daily uses
- const months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December"
-  ];
+// Just a helper array to check month updates without using the Api calls due to limit of daily API usage
+const months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December"
+];
 
 describe("Navbar Component", () => {
   test("Should render 5 items properly", () => {
@@ -80,5 +80,33 @@ describe("Navbar Component", () => {
 
     // Get the chevrons
     const [chevLeft, chevRight] = screen.getAllByRole("button");
-  })
+
+    // Get the Today button
+    const todayBtn = screen.getByText("Today");
+
+    // Get the current month
+    const currMonth = screen.getByRole("heading").textContent.split(" ")[0];
+
+    // Click on left chevron
+    userEvent.click(chevLeft);
+
+    // Click on Today button
+    userEvent.click(todayBtn);
+
+    // Check if the month changed to the current one
+    expect(screen.getByRole("heading").textContent.split(" ")[0]).toBe(
+      currMonth
+    );
+
+    // Click on right chevron
+    userEvent.click(chevRight);
+
+    // Click on Today button
+    userEvent.click(todayBtn);
+
+    // Check if the month changed to the current one
+    expect(screen.getByRole("heading").textContent.split(" ")[0]).toBe(
+      currMonth
+    );
+  });
 });
