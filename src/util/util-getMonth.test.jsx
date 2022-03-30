@@ -2,11 +2,13 @@ import dayjs from "dayjs";
 import { getMonth } from "./utils";
 
 describe("Checking the algorithm which gets the days table to be displayed", () => {
+  
   test("Checking if algorithm returns a 5x7 tabular content", () => {
     const table = getMonth();
     const dimensions = [table.length, table[0].length];
     expect(dimensions).toEqual([5, 7]);
   });
+
   test("Checking if the algorithm returns the first day of the current month correctly", () => {
     const table = getMonth();
     const year = dayjs().year();
@@ -21,6 +23,7 @@ describe("Checking the algorithm which gets the days table to be displayed", () 
       actualFirstDayOfTheMonth
     );
   });
+
   test("Checking if the algorithm returns the correct month using positive and negative parameters", () => {
     //   month -> -1: "December" 0: "January", 1: "February", 11: "December" , 12: "January"w
     function getMonthName(month){

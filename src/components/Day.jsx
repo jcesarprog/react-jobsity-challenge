@@ -34,7 +34,7 @@ export const Day = ({ day }) => {
   }
 
   return (
-    // ! added just for accessibility purposes, being able to press tab to navigate through the days
+    // Defined as a button to be treated like one, have tab and easier testing
     <button
       className="btn__day"
       onClick={(e) => {
@@ -44,9 +44,13 @@ export const Day = ({ day }) => {
         }
       }}
     >
-      <div className={`day ${isWeekend ? "weekend" : ""}`}>
-        <span className={`${getCurrentDayClass() && "day-circle-today"}`}>
-          <p className={getGrayBlueishColor()}>{day.format("DD")}</p>
+      <div className={`day ${isWeekend ? "weekend" : ""}`}
+      data-testid="day"
+      >
+        <span className={getCurrentDayClass()? "day-circle-today": ""} role={getCurrentDayClass()? "mark": ""}>
+          <p className={getGrayBlueishColor()}
+          role="paragraph"
+          >{day.format("DD")}</p>
         </span>
         <div className="day__event">
           {dayEvents.length ? (

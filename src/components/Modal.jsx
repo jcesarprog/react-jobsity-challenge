@@ -23,6 +23,7 @@ export const Modal = ({ setOpenModal, day }) => {
     <div
       className="modal__overlay"
       ref={modalOverlayRef}
+      role="overlay"
       onClick={(e) =>
         !e.target.closest(".modal__container") && clearEventAndCloseModel()
       }
