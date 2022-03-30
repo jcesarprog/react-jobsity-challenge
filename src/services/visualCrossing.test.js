@@ -28,7 +28,6 @@ describe("VisualCrossing service", () => {
       "2022-01-01"
     );
     const resolvedAddress = request.resolvedAddress.split(",")[0];
-    console.log(resolvedAddress);
     expect(resolvedAddress).toBe("Rio de Janeiro");
   });
 });
