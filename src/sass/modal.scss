@@ -144,15 +144,17 @@
 }
 
 .modal__form-btns {
+  margin-top: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-inline: 0.4rem;
+  margin-top: 1rem;
   button {
+  margin-top: 0;
     display: flex;
     gap: 0.5rem;
     align-items: center;
-    margin-top: 1rem;
     margin-inline: 0rem;
     padding: 0.8rem 2.5rem;
     border: none;

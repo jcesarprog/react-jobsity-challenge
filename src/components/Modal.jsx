@@ -28,14 +28,16 @@ export const Modal = ({ setOpenModal, day }) => {
         !e.target.closest(".modal__container") && clearEventAndCloseModel()
       }
     >
-      <div className="modal__container" ref={modalContainerRef}>
+      <div className="modal__container" ref={modalContainerRef} role="dialog">
         <div className="modal__header">
           <div className="modal__header-box">
-            <span className="material-icons">schedule</span>
+            <span className="material-icons" data-testid="modal-icon">schedule</span>
             <h3 className="modal__header-day">{day.format("dddd, MMMM DD")}</h3>
           </div>
           <div className="modal__header-icons">
-            <span className="material-icons" onClick={clearEventAndCloseModel}>
+            <span className="material-icons" 
+            data-testid="modal-close"
+            onClick={clearEventAndCloseModel}>
               close
             </span>
           </div>
@@ -101,8 +103,9 @@ export const Modal = ({ setOpenModal, day }) => {
             />
           </div>
           <div className="modal__form-forecast-box">
-            <p>Weather Forecast:</p>
+            <p role="paragraph">Weather Forecast:</p>
             <p
+            role="paragraph"
               ref={errorEl}
               className={`${event.status === "error" ? "error" : ""}`}
             >

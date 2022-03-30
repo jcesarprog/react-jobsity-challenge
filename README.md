@@ -15,26 +15,33 @@
 ![Modal with data](./screenshots/modal2.png "Modal with data")
 
 ## Deployed App on Heroku
+
 [React-Jobsity-Challenge App](https://react-jobsity-challenge.herokuapp.com/calendar)
 
 ## How to deploy
- - Install node >= 16.14 
- - NPM >= 8.5 or Yarn >= 1.22
- - Run `npm install` | `yarn install` to install all dependencies.
- - Run `npm start`   | `yarn run` to run the app locally.
- - Create a .env file on the root folder with:
-   - REACT_APP_VISUAL_CROSSING_KEY=N7TD6EXYXS2DUTJRW4G2V5TU9
- - You can find the project running on `localhost:3000`.
+
+- Install node >= 16.14
+- NPM >= 8.5 or Yarn >= 1.22
+- Run `npm install` | `yarn install` to install all dependencies.
+- Run `npm start` | `yarn run` to run the app locally.
+- You can you one of the 2 keys for the API: (had to create one more key due to a limit for requests per day on VisualCrossing)
+  - N7TD6EXYXS2DUTJRW4G2V5TU9
+  - V2GB55BD6FRJC48XZWDGSTZCK
+- Create a .env file on the root folder with either keys, for example:
+  - REACT_APP_VISUAL_CROSSING_KEY=N7TD6EXYXS2DUTJRW4G2V5TU9
+- You can find the project running on `localhost:3000`.
 
 ## Tecnologies used
+
 - GSAP3 for small animations
 - React-router-dom v6 (updated the original one)
-- axios for fetching data from Visual Crossing API
+- Axios for fetching data from Visual Crossing API
 - Dayjs library to help with the calendar
 - SASS
+- Testing-library for the tests
 
 ## Considerations
+
 - Followed the structure of folders suggested
 - Used the useReducer hook instead of Redux, since its a small application
 - Avoided using pre-made UI components from libraries (mainly for the modal)
-  
