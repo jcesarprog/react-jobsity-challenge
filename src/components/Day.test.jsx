@@ -8,7 +8,7 @@ describe("Day Component", () => {
   test("Check if the component is rendered properly on weekends", () => {
     // Render the component with the first day from the table
     // The first day in the table should always be Sunday
-    render(<Day day={getMonth()[0][0]} />, { wrapper: AppContextProvider } );
+    render(<Day day={getMonth()[0][0]} />, { wrapper: AppContextProvider });
 
     // Get the day Cell
     const dayCell = screen.getByRole("button");
@@ -35,7 +35,7 @@ describe("Day Component", () => {
   test("Check if the component is rendered properly on week days (business day)", () => {
     // Render the component with the second day from the table
     // The second day in the table should always be Monday
-    render(<Day day={getMonth()[0][1]}/>, { wrapper: AppContextProvider });
+    render(<Day day={getMonth()[0][1]} />, { wrapper: AppContextProvider });
 
     // Get the day Cell
     const dayCell = screen.getByRole("button");
@@ -55,14 +55,4 @@ describe("Day Component", () => {
     // Check if the day number is rendered
     expect(dayNumber.textContent.length).toBeGreaterThan(0);
   });
-
-//   test("Check opening modal by clicking on the day",()=>{
-//     //   Render the component with the first day from the table
-//     render(<Day day={getMonth()[0][0]} />, { wrapper: AppContextProvider });
-
-//     // Get the day Cell
-//     const dayCell = screen.getByRole("button");
-//     userEvent.click(dayCell);
-//     screen.debug();
-//   })
 });
